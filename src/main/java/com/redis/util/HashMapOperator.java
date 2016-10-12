@@ -4,7 +4,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 
@@ -13,7 +12,7 @@ import java.util.Map;
  */
 public class HashMapOperator<K, V>{
 
-    private static final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+    private static final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/root-context.xml");
 
     private static final RedisTemplate redisTemplate = (RedisTemplate) context.getBean("redisTemplate");
 
