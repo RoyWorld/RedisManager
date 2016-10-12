@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/mvc" xmlns:rds="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/aop    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+           http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+           http://www.springframework.org/schema/tx      http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis-1.0.xsd">
+
+    <!--<aop:aspectj-autoproxy/>-->
+
+    <!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
+    <context:annotation-config/>
+    <context:component-scan base-package="com.redis"/>
+
+    <!-- Enables the Spring MVC @Controller programming com.redis.web -->
+    <mvc:annotation-driven/>
+
+    <!--静态文件访问的处理-->
+    <mvc:default-servlet-handler/>
+
+    <!--多视图处理器-->
+    <!--<bean class="com.redis.util.MixedViewResolver">-->
+        <!--<property name="resolvers">-->
+            <!--<map>-->
+                <!--&lt;!&ndash;<entry key="jsp">&ndash;&gt;-->
+                <!--&lt;!&ndash;<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="suffix" value=".jsp"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;<property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>&ndash;&gt;-->
+                <!--&lt;!&ndash;</bean>&ndash;&gt;-->
+                <!--&lt;!&ndash;</entry>&ndash;&gt;-->
+                <!--<entry key="html">-->
+                    <!--<bean class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">-->
+                        <!--<property name="suffix" value=".html" />-->
+                        <!--<property name="contentType" value="text/html;charset=utf-8" />-->
+                    <!--</bean>-->
+                <!--</entry>-->
+            <!--</map>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--velocity视图处理器-->
+    <bean id="velocityViewResolver" class="org.springframework.web.servlet.view.velocity.VelocityViewResolver">
+        <property name="suffix" value=".html" />
+        <property name="contentType" value="text/html;charset=utf-8" />
+    </bean>
+
+    <!--velocity配置-->
+    <bean id="velocityConfigurer" class="org.springframework.web.servlet.view.velocity.VelocityConfigurer">
+        <property name="resourceLoaderPath">
+            <value>WEB-INF/html/</value>
+        </property>
+        <property name="velocityProperties">
+            <props>
+                <prop key="input.encoding">UTF-8</prop>
+                <prop key="output.encoding">UTF-8</prop>
+                <prop key="contentType">text/html;charset=UTF-8</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

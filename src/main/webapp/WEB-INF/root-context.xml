@@ -3,6 +3,7 @@
        xmlns:aop="http://www.springframework.org/schema/aop" xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:p="http://www.springframework.org/schema/mvc" xmlns:rds="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/aop    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
            http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
@@ -11,10 +12,6 @@
            http://www.springframework.org/schema/redis http://www.springframework.org/schema/redis/spring-redis-1.0.xsd">
 
     <!--<aop:aspectj-autoproxy/>-->
-
-    <!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
-    <!--<context:annotation-config/>-->
-    <!--<context:component-scan base-package="com.redis"/>-->
 
     <bean id="jedisConnFactory"
           class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
