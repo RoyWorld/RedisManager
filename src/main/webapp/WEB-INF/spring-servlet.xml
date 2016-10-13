@@ -18,10 +18,22 @@
     <context:component-scan base-package="com.redis"/>
 
     <!-- Enables the Spring MVC @Controller programming com.redis.web -->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <p:message-converters>
+            <ref bean="fastJsonHttpMessageConverter"/>
+        </p:message-converters>
+    </mvc:annotation-driven>
 
     <!--静态文件访问的处理-->
     <mvc:default-servlet-handler/>
+
+    <bean id="fastJsonHttpMessageConverter" class="com.redis.util.FastJsonHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json; charset=utf-8</value>
+            </list>
+        </property>
+    </bean>
 
     <!--多视图处理器-->
     <!--<bean class="com.redis.util.MixedViewResolver">-->

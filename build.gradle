@@ -49,6 +49,8 @@ dependencies {
             //json依赖包
             'org.codehaus.jackson:jackson-core-asl:1.9.13',
             'org.codehaus.jackson:jackson-mapper-asl:1.9.13',
+            //json转化依赖包fastjson
+            'com.alibaba:fastjson:1.2.17',
             //logback依赖包
             'org.codehaus.janino:janino:2.7.8',
             'ch.qos.logback:logback-classic:1.1.2',
