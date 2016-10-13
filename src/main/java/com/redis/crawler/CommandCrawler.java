@@ -1,6 +1,6 @@
 package com.redis.crawler;
 
-import com.redis.util.HashMapOperator;
+import com.redis.util.repository.HashMapOperator;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;

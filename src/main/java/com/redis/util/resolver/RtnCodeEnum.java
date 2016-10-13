@@ -1,4 +1,4 @@
-package com.redis.util;
+package com.redis.util.resolver;
 
 /**
  * Created by Administrator on 2015/12/4.

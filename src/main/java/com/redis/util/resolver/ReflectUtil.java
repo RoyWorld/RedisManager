@@ -1,7 +1,6 @@
-package com.redis.util;
+package com.redis.util.resolver;
 
 import com.redis.crawler.Book;
-import sun.security.jca.GetInstance;
 
 import java.lang.reflect.*;
 import java.util.HashMap;

@@ -27,7 +27,7 @@
     <!--静态文件访问的处理-->
     <mvc:default-servlet-handler/>
 
-    <bean id="fastJsonHttpMessageConverter" class="com.redis.util.FastJsonHttpMessageConverter">
+    <bean id="fastJsonHttpMessageConverter" class="com.redis.util.resolver.FastJsonHttpMessageConverter">
         <property name="supportedMediaTypes">
             <list>
                 <value>application/json; charset=utf-8</value>
@@ -36,7 +36,7 @@
     </bean>
 
     <!--多视图处理器-->
-    <!--<bean class="com.redis.util.MixedViewResolver">-->
+    <!--<bean class="com.redis.util.resolver.MixedViewResolver">-->
         <!--<property name="resolvers">-->
             <!--<map>-->
                 <!--&lt;!&ndash;<entry key="jsp">&ndash;&gt;-->

@@ -1,4 +1,4 @@
-package com.redis.util;
+package com.redis.util.resolver;
 
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;

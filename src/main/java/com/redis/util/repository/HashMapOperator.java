@@ -1,5 +1,6 @@
-package com.redis.util;
+package com.redis.util.repository;
 
+import com.redis.util.resolver.ReflectUtil;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;

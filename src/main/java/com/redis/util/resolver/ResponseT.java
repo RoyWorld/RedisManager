@@ -1,4 +1,4 @@
-package com.redis.util;
+package com.redis.util.resolver;
 
 import java.io.Serializable;
 
