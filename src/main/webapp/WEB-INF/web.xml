@@ -47,7 +47,7 @@
     <!--配置root context-->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>WEB-INF/root-context.xml</param-value>
+        <param-value>classpath:root-context.xml</param-value>
     </context-param>
 
     <!--为defaultServlet建立映射，使得可以访问到.css、.gif等内容 -->

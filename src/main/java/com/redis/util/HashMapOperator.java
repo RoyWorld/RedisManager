@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public class HashMapOperator<K, V>{
 
-    private static final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/root-context.xml");
+    private static final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
 
     private static final RedisTemplate redisTemplate = (RedisTemplate) context.getBean("redisTemplate");
 
