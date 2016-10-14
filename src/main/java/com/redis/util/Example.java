@@ -2,6 +2,7 @@ package com.redis.util;
 
 import com.redis.crawler.Command;
 import com.redis.util.repository.HashMapOperator;
+import com.redis.util.repository.KeyOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -9,6 +10,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import javax.annotation.Resource;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2016/10/8.
@@ -28,8 +30,11 @@ public class Example {
     }
 
     public static void main(String[] args) throws MalformedURLException {
-        HashMapOperator<String, Command> hashMapOperator = new HashMapOperator<>();
-        Command command = hashMapOperator.hGet("string:APPEND", Command.class);
-        System.out.println(command.toString());
+        KeyOperator<String, String> keyOperator = new KeyOperator<>();
+        Set<String> set = keyOperator.keys("*");
+        for (String key : set){
+            System.out.println(key);
+            keyOperator.rename(key, "command:" + key);
+        }
     }
 }

@@ -1,18 +1,11 @@
 package com.redis.util.repository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.data.redis.connection.convert.Converters;
-import org.springframework.data.redis.connection.jedis.JedisConverters;
 import org.springframework.data.redis.core.BoundValueOperations;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.TimeoutUtils;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.data.redis.serializer.SerializationUtils;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
-import org.springframework.util.Assert;
-import org.springframework.util.CollectionUtils;
-import redis.clients.jedis.Jedis;
+import org.springframework.stereotype.Component;
+
 
 import java.util.*;
 import java.util.concurrent.TimeUnit;
@@ -20,24 +13,28 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Administrator on 2016/10/13.
  */
+@Component
 public class KeyOperator<K, V> {
 
-    private static final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+//    private static final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+//
+//    private static final RedisTemplate redisTemplate = (RedisTemplate) context.getBean("redisTemplate");
+//
+//    private volatile static KeyOperator keyOperator;
+//
+//    public static KeyOperator getKeyOperator(){
+//        if (keyOperator == null){
+//            synchronized (HashMapOperator.class){
+//                if (keyOperator == null){
+//                    keyOperator = new KeyOperator();
+//                }
+//            }
+//        }
+//        return keyOperator;
+//    }
 
-    private static final RedisTemplate redisTemplate = (RedisTemplate) context.getBean("redisTemplate");
-
-    private volatile static KeyOperator keyOperator;
-
-    public static KeyOperator getKeyOperator(){
-        if (keyOperator == null){
-            synchronized (HashMapOperator.class){
-                if (keyOperator == null){
-                    keyOperator = new KeyOperator();
-                }
-            }
-        }
-        return keyOperator;
-    }
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     private  BoundValueOperations<K, V> getBoundValueOps(final K key){
         return redisTemplate.boundValueOps(key);

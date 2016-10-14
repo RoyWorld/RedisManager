@@ -1,9 +1,11 @@
 package com.redis.util.repository;
 
 import com.redis.util.resolver.ReflectUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
@@ -11,26 +13,30 @@ import java.util.Map;
 /**
  * Created by Administrator on 2016/10/9.
  */
+@Component
 public class HashMapOperator<K, V>{
 
-    private static final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+//    private static final ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("root-context.xml");
+//
+//    private static final RedisTemplate redisTemplate = (RedisTemplate) context.getBean("redisTemplate");
+//
+//    private volatile static HashMapOperator hashMapOperator;
+//
+//    public static HashMapOperator getHashMapOperator(){
+//        if (hashMapOperator == null){
+//            synchronized (HashMapOperator.class){
+//                if (hashMapOperator == null){
+//                    hashMapOperator = new HashMapOperator();
+//                }
+//            }
+//        }
+//        return hashMapOperator;
+//    }
 
-    private static final RedisTemplate redisTemplate = (RedisTemplate) context.getBean("redisTemplate");
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     private final ReflectUtil<V> reflectUtil = new ReflectUtil<>();
-
-    private volatile static HashMapOperator hashMapOperator;
-
-    public static HashMapOperator getHashMapOperator(){
-        if (hashMapOperator == null){
-            synchronized (HashMapOperator.class){
-                if (hashMapOperator == null){
-                    hashMapOperator = new HashMapOperator();
-                }
-            }
-        }
-        return hashMapOperator;
-    }
 
     private <HK, HV> BoundHashOperations<K, HK, HV> getBoundHashOps(K key) {
 		return redisTemplate.boundHashOps(key);

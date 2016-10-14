@@ -39,7 +39,7 @@ public class CommandCrawler {
 
     public static void main(String[] args) throws IOException {
         List<Command> commandList = CommandCrawler.crawlerCommandInfo();
-        HashMapOperator<String, Command> hashMapOperator = HashMapOperator.getHashMapOperator();
+        HashMapOperator<String, Command> hashMapOperator = new HashMapOperator<>();
         for (Command command: commandList){
             System.out.println(command.toString());
             String key = command.getGroup() + ":" + command.getName();
