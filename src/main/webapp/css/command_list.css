@@ -246,7 +246,7 @@ body.topics.whos-using-redis ul:first-of-type li img { vertical-align: middle; m
 #commands nav a.current { background-color: #666666; color: white; }
 #commands nav label { margin: 0 10px; }
 #commands nav label span { display: none; }
-#commands nav select, #commands nav input { border: 1px solid #bbbbbb; font-size: 14px; margin: 0 5px; }
+#commands nav select, #commands nav input { border: 1px solid #bbbbbb; font-size: 12px; margin: 0 5px; }
 #commands nav input { border-radius: 5px; padding: 5px 5px 6px 5px; width: 100px; }
 #commands nav input:focus { outline: none; }
 #commands nav select { height: 32px; }

@@ -3,6 +3,7 @@ package com.redis.util;
 import com.redis.crawler.Command;
 import com.redis.util.repository.HashMapOperator;
 import com.redis.util.repository.KeyOperator;
+import com.redis.util.repository.SetOperator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.ListOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -10,6 +11,8 @@ import org.springframework.data.redis.core.RedisTemplate;
 import javax.annotation.Resource;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -30,11 +33,26 @@ public class Example {
     }
 
     public static void main(String[] args) throws MalformedURLException {
-        KeyOperator<String, String> keyOperator = new KeyOperator<>();
-        Set<String> set = keyOperator.keys("*");
-        for (String key : set){
-            System.out.println(key);
-            keyOperator.rename(key, "command:" + key);
-        }
+//        SetOperator<String, String> setOperator = SetOperator.getSetOperator();
+//        String[] groups = new String[]{
+//                "Cluster",
+//                "Connection",
+//                "Geo",
+//                "Hashes",
+//                "HyperLogLog",
+//                "Keys",
+//                "Lists",
+//                "Pub/Sub",
+//                "Scripting",
+//                "Server",
+//                "Sets",
+//                "Sorted Sets",
+//                "Strings",
+//                "Transactions"};
+//        List<String> groupList = Arrays.asList(groups);
+//        String key = "groupOfCommands";
+//        for (String group : groupList){
+//            setOperator.sAdd(key, group);
+//        }
     }
 }

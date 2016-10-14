@@ -1,49 +1,37 @@
 #parse("/header.html")
-
-<section id='commands'>
-  <nav>
-    <div class='container'>
-      <label>
-        <span>Filter by group:</span>
-        <select class='command-reference-filter'>
-          <option value=''>All</option>
-          <option value='cluster'>Cluster</option>
-          <option value='connection'>Connection</option>
-          <option value='geo'>Geo</option>
-          <option value='hash'>Hashes</option>
-          <option value='hyperloglog'>HyperLogLog</option>
-          <option value='generic'>Keys</option>
-          <option value='list'>Lists</option>
-          <option value='pubsub'>Pub/Sub</option>
-          <option value='scripting'>Scripting</option>
-          <option value='server'>Server</option>
-          <option value='set'>Sets</option>
-          <option value='sorted_set'>Sorted Sets</option>
-          <option value='string'>Strings</option>
-          <option value='transactions'>Transactions</option>
-        </select>
-      </label>
-      or
-      <label>
-        <span>search for:</span>
-        <input autofocus='autofocus' class='js-command-reference-search' placeholder='e.g. GETRANGE' />
-      </label>
-    </div>
-  </nav>
-
 <div class='container' ng-app="modelApp" ng-controller="modelListCtrl">
-  <ul>
-    <li ng-repeat="command in commandList | orderBy: 'name'" data-group="{{command.group}}" data-name="{{command.name | lowercase}}">
-      <a ng-href={{command.href}}>
+  <section id='commands'>
+    <nav>
+      <div class='container'>
+        <label>
+          <span>Filter by group:</span>
+          <select class='command-reference-filter' ng-options="group.value as group.name for group in commandGroups" ng-model="commandGroup" ng-change="query()">
+            <option value=''>All</option>
+          </select>
+        </label>
+        or
+        <label>
+          <span>search for:</span>
+          <input autofocus='autofocus' class='js-command-reference-search' placeholder='e.g. GETRANGE' ng-model="commandName" ng-change="query()" />
+        </label>
+      </div>
+    </nav>
+
+    <div>
+      <ul>
+        <li ng-repeat="command in commandList | orderBy: 'name'" data-group="{{command.group}}" data-name="{{command.name | lowercase}}">
+          <a ng-href={{command.href}}>
         <span class='command'>{{command.name}}
           <span class='args'>{{command.args}}</span>
         </span>
-        <span class='summary'>{{command.summary}}</span>
-      </a>
-    </li>
-  </ul>
+            <span class='summary'>{{command.summary}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
 </div>
-</section>
+
 
 </body>
 <script src="../js/global.js"></script>
