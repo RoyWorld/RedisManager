@@ -38,6 +38,8 @@ public class CommandController {
         String keys = "command:";
         if (group != null && group != ""){
             keys = keys + group + ":";
+        }else {
+            keys = keys + "*:";
         }
         if (name != null && name != ""){
             keys = keys + name;
@@ -54,16 +56,12 @@ public class CommandController {
     @ResponseBody
     @RequestMapping(value = "/command_group")
     public Object commandOfGroup(){
-        Set<String> group = setOperator.sMembers("groupOfCommands");
+        Map<String, String> group = hashMapOperator.hGet("groupOfCommands");
         List<Map<String, String>> groupList = new ArrayList<>();
-        for(String groupname : group){
+        for(String groupname : group.keySet()){
             Map<String, String> map = new HashMap<>();
             map.put("name", groupname);
-            if (groupname.equals("Pub/Sub")){
-                map.put("value", "pubsub");
-            }else {
-                map.put("value", groupname);
-            }
+            map.put("value", group.get(groupname));
             groupList.add(map);
         }
         return groupList;
