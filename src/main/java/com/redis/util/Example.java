@@ -33,26 +33,6 @@ public class Example {
     }
 
     public static void main(String[] args) throws MalformedURLException {
-//        SetOperator<String, String> setOperator = SetOperator.getSetOperator();
-//        String[] groups = new String[]{
-//                "Cluster",
-//                "Connection",
-//                "Geo",
-//                "Hashes",
-//                "HyperLogLog",
-//                "Keys",
-//                "Lists",
-//                "Pub/Sub",
-//                "Scripting",
-//                "Server",
-//                "Sets",
-//                "Sorted Sets",
-//                "Strings",
-//                "Transactions"};
-//        List<String> groupList = Arrays.asList(groups);
-//        String key = "groupOfCommands";
-//        for (String group : groupList){
-//            setOperator.sAdd(key, group);
-//        }
+
     }
 }

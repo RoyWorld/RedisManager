@@ -8,6 +8,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -37,13 +38,64 @@ public class CommandCrawler {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    private void setCommand2Redis(){
         List<Command> commandList = CommandCrawler.crawlerCommandInfo();
         HashMapOperator<String, Command> hashMapOperator = new HashMapOperator<>();
         for (Command command: commandList){
             System.out.println(command.toString());
-            String key = command.getGroup() + ":" + command.getName();
+            String key = "command:" + command.getGroup() + ":" + command.getName();
             hashMapOperator.hSet(key, command);
         }
+    }
+
+    private void setCommandGroup(){
+//        HashMapOperator<String, String> setOperator = HashMapOperator.getHashMapOperator();
+//        String[] groups = new String[]{
+//                "Cluster",
+//                "Connection",
+//                "Geo",
+//                "Hashes",
+//                "HyperLogLog",
+//                "Keys",
+//                "Lists",
+//                "Pub/Sub",
+//                "Scripting",
+//                "Server",
+//                "Sets",
+//                "Sorted Sets",
+//                "Strings",
+//                "Transactions"};
+//        List<String> groupList = Arrays.asList(groups);
+//        String key = "groupOfCommands";
+//        for (String group : groupList){
+//            String value = group.toLowerCase();
+//            if (group.equals("Hashes")){
+//                value = "hash";
+//            }
+//            if (group.equals("Lists")){
+//                value = "list";
+//            }
+//            if (group.equals("Sorted Sets")){
+//                value = "sorted_set";
+//            }
+//            if (group.equals("Strings")){
+//                value = "string";
+//            }
+//            if (group.equals("Sets")){
+//                value = "set";
+//            }
+//            if (group.equals("Pub/Sub")){
+//                value = "pubsub";
+//            }
+//            if (group.equals("Keys")){
+//                value = "generic";
+//            }
+//            setOperator.hSet(key, group, value);
+//        }
+    }
+
+
+    public static void main(String[] args) throws IOException {
+
     }
 }
