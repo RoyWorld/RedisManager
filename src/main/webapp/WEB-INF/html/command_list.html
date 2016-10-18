@@ -3,14 +3,14 @@
   <section id='commands'>
     <nav>
       <div class='container'>
-        <label>
+        <label style="display: inline-block">
           <span>Filter by group:</span>
           <select class='command-reference-filter' ng-options="group.value as group.name for group in commandGroups" ng-model="commandGroup" ng-change="query()">
             <option value=''>All</option>
           </select>
         </label>
         or
-        <label>
+        <label style="display: inline-block">
           <span>search for:</span>
           <input autofocus='autofocus' class='js-command-reference-search' placeholder='e.g. GETRANGE' ng-model="commandName" ng-change="query()" />
         </label>
@@ -31,10 +31,8 @@
     </div>
   </section>
 </div>
+#include("/version.html")
 
-
-</body>
-<script src="../js/global.js"></script>
 #include("/footer.html")
 <script src="../js/redis/command_list.js"></script>
 </html>

@@ -1,0 +1,81 @@
+#parse("/header.html")
+
+<div class="container" ng-app="modelApp" ng-controller="modelListCtrl">
+    <div class="container">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#contact_01" data-toggle="tab">Joe Smith</a></li>
+            <li>
+                <a href="#contact_02" data-toggle="tab">Molly Lewis</a></li>
+            <li>
+                <a href="#" class="add-contact" data-toggle="tab">+ Add Contact</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="contact_01">Contact Form: Joe Smith</div>
+            <div class="tab-pane" id="contact_02">Contact Form: Molly Lewis</div></div>
+    </div>
+
+</div>
+
+<div class="container-fluid">
+    <div class="row-fluid row">
+        <div class="span3">
+            <div class="well sidebar-nav-fixed">
+                <div>
+                    <span style="font-size: 20px">key search:</span>
+                    <input style="font-size: 28px;" class="form-control" autofocus='autofocus' placeholder='e.g. '/>
+                </div>
+                <ul class="nav nav-list">
+                    <li>
+                        <label class="tree-toggle nav-header">Buttons</label>
+                        <ul class="nav nav-list tree">
+                            <li><a href="#">Colors</a></li>
+                            <li><a href="#">Sizes</a></li>
+                            <li>
+                                <label class="tree-toggle nav-header">Forms</label>
+                                <ul class="nav nav-list tree">
+                                    <li>
+                                        <a href="#">Horizontal</a></li>
+                                    <li>
+                                        <a href="#">Vertical</a></li>
+                                    <li>
+                                        <label class="tree-toggle nav-header">Forms</label>
+                                        <ul class="nav nav-list tree">
+                                            <li>
+                                                <a href="#">Horizontal</a></li>
+                                            <li>
+                                                <a href="#">Vertical</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="span9 span-fixed-sidebar">
+
+            <div class="row-fluid">
+
+                #include("/key_detail.html")
+
+            </div>
+        </div>
+
+    </div>
+</div>
+#include("/version.html")
+#include("/footer.html")
+<script src="../js/redis/manager.js"></script>
+<script>
+    $('.tree-toggle').click(function() {
+        $(this).parent().children('ul.tree').toggle(200);
+    });
+    $(function(){
+        $('.tree-toggle').parent().children('ul.tree').toggle(200);
+    })
+</script>
+</html>
