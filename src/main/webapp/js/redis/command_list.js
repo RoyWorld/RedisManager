@@ -1,5 +1,6 @@
 'use strict';
 
+var url = "/redis/command"
 /* App Module */
 var modelApp = angular.module('modelApp', []);
 
@@ -12,7 +13,7 @@ modelApp.controller('modelListCtrl', function($scope, $rootScope, $http){
         //查command的groups
         $http({
             method: "get",
-            url: "/redis/command_group",
+            url: url + "/command_group",
             headers: {
                 contentType: 'application/json;charset=UTF-8'
             }
@@ -34,7 +35,7 @@ modelApp.controller('modelListCtrl', function($scope, $rootScope, $http){
         }
         $http({
             method: "get",
-            url: "/redis/command_list",
+            url: url + "/list",
             params:params,
             headers: {
                 contentType: 'application/json;charset=UTF-8'

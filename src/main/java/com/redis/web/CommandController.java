@@ -15,7 +15,7 @@ import java.util.*;
  * Created by Administrator on 2016/10/11.
  */
 @Controller
-@RequestMapping(value = "/redis")
+@RequestMapping(value = "/redis/command")
 public class CommandController {
 
     @Autowired
@@ -27,13 +27,13 @@ public class CommandController {
     @Autowired
     private SetOperator setOperator;
 
-    @RequestMapping(value = "/command")
+    @RequestMapping(value = "")
     public String index(){
         return "command_list";
     }
 
     @ResponseBody
-    @RequestMapping(value = "/command_list")
+    @RequestMapping(value = "/list")
     public Object commandList(String group, String name){
         String keys = "command:";
         if (group != null && group != ""){
