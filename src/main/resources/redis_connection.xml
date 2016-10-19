@@ -1,0 +1,12 @@
+<connections>
+    <connection>
+        <name>local</name>
+        <username>juait</username>
+        <password>128e3</password>
+    </connection>
+    <connection>
+        <name>Remote</name>
+        <username>autygbg</username>
+        <password>ad112</password>
+    </connection>
+</connections>
