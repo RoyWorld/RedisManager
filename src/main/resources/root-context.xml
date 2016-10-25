@@ -17,6 +17,11 @@
           class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
           rds:hostName="localhost"  rds:port="6379"/>
 
+    <bean id="dymanicRedisFactory"
+          class="com.redis.util.repository.DymanicRedisFactory">
+        <constructor-arg ref="jedisConnFactory"/>
+    </bean>
+
     <!-- redis template definition -->
     <bean id="redisTemplate"
           class="org.springframework.data.redis.core.RedisTemplate"
