@@ -3,6 +3,7 @@ package com.redis.web;
 import com.redis.util.repository.ConfigOperator;
 import com.redis.util.repository.HashMapOperator;
 import com.redis.util.repository.KeyOperator;
+import com.redis.util.resolver.BizData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.stereotype.Controller;
@@ -64,7 +65,9 @@ public class ManagerController {
             case "list":
             case "hash":
                 Map entries = hashMapOperator.hGet(key);
-                map.put("value", entries.entrySet());
+                BizData<Map.Entry> bizData = new BizData<>();
+                bizData.setRows(new ArrayList<>(entries.entrySet()));
+                map.put("value", bizData);
                 map.put("size", entries.size());
                 return map;
         }

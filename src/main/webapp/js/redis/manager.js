@@ -60,9 +60,16 @@ modelApp.controller('modelListCtrl', function($scope, $rootScope, $http){
         }).success(function (data) {
             if (data.rtnCode == "0000000") {
                 $scope.key = data.bizData.key;
-                $scope.hashmapValue = data.bizData.value;
+                $scope.hashmapValue = data.bizData.value.rows;
                 $scope.ttl = data.bizData.ttl;
                 $scope.size = data.bizData.size;
+
+                var pCtrl = {};
+                angular.forEach(["records", "pagesize", "total","page"], function (name) {
+                    pCtrl[name] = data.bizData.value[name];
+                });
+                $scope["modelEntrys"] = data.bizData["rows"];
+                $scope.pCtrl = pCtrl;
             }
         });
     }

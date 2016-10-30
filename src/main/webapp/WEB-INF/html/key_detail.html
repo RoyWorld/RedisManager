@@ -179,25 +179,25 @@
             </table>
 
             <div class="page-num">
-                <div class="utils_pager" ng-if="modelEntrys.length > 0">
-                    <button class="btn btn-default btn-sm" title="第一页" ng-disabled="pCtrl.page==1"
+                <div class="utils_pager" ng-if="hashmapValue.length > 0">
+                    <button class="btn btn-default btn-sm" title="first" ng-disabled="pCtrl.page==1"
                             ng-click="page(1)">
                         <span class="glyphicon glyphicon-step-backward"></span></button>
-                    <button class="btn btn-default btn-sm" title="上一页"
+                    <button class="btn btn-default btn-sm" title="previous"
                             ng-disabled="pCtrl.page==1" ng-click="page(int(pCtrl.page)-1)">
                         <span class="glyphicon glyphicon-chevron-left"></span></button>
                     <input class="form-control input-sm" type="text" ng-model="pCtrl.page"
                            onkeypress="return utils.onlyNum(event)" min="1" max="{{pCtrl.total}}"> /
-                    共{{pCtrl.total}}页
-                    <button class="btn btn-default btn-sm" title="前往" ng-click="page(pCtrl.page)"
+                    total&nbsp;{{pCtrl.total}}
+                    <button class="btn btn-default btn-sm" title="Go" ng-click="page(pCtrl.page)"
                             ng-disabled="pCtrl.total==1">GO</button>
-                    <button class="btn btn-default btn-sm" title="下一页"
+                    <button class="btn btn-default btn-sm" title="next"
                             ng-click="page(int(pCtrl.page)+1)" ng-disabled="pCtrl.page==pCtrl.total">
                         <span class="glyphicon glyphicon-chevron-right"></span></button>
-                    <button class="btn btn-default btn-sm" title="最后一页"
+                    <button class="btn btn-default btn-sm" title="last"
                             ng-click="page(pCtrl.total)" ng-disabled="pCtrl.page==pCtrl.total">
                         <span class="glyphicon glyphicon-step-forward"></span></button>
-                    每页{{pCtrl.pagesize}}条，共{{pCtrl.records}}条
+                    {{pCtrl.pagesize}}&nbsp;record per page，total&nbsp;{{pCtrl.records}}&nbsp;record
                 </div>
             </div>
 
