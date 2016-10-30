@@ -1,8 +1,8 @@
 package com.redis;
 
 
-import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.webapp.WebAppContext;
+import org.mortbay.jetty.Server;
+import org.mortbay.jetty.webapp.WebAppContext;
 
 /**
  * 使用Jetty运行调试Web应用, 在Console输入回车停止服务.
