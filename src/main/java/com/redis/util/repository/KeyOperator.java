@@ -99,4 +99,7 @@ public class KeyOperator<K, V> {
         redisTemplate.rename(oldkey, newKey);
     }
 
+    public Long getExpire(final K key){
+        return redisTemplate.getExpire(key);
+    }
 }

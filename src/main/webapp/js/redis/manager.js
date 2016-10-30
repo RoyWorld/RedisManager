@@ -3,6 +3,8 @@
  */
 'use strict';
 
+var url = "/redis/manager";
+
 /* App Module */
 var modelApp = angular.module('modelApp', []);
 
@@ -17,7 +19,7 @@ modelApp.controller('modelListCtrl', function($scope, $rootScope, $http){
     $scope.query = function (){
         $http({
             method: "get",
-            url: "/redis/manager/database",
+            url: url + "/database",
             headers: {
                 contentType: 'application/json;charset=UTF-8'
             }
@@ -38,11 +40,32 @@ modelApp.controller('modelListCtrl', function($scope, $rootScope, $http){
         }
     }
 
-
+    //原始的tree收缩点击事件
     $('.tree-toggle').click(function() {
         $(this).parent().children('ul.tree').toggle(200);
     });
-    
+
+    //tree中key的点击事件
+    $scope.keySelect = function (key, databaseName) {
+        var params = {};
+        params["key"] = key;
+        params["databaseName"] = databaseName;
+        $http({
+            method: "get",
+            url: url + "/keySelect",
+            params:params,
+            headers: {
+                contentType: 'application/json;charset=UTF-8'
+            }
+        }).success(function (data) {
+            if (data.rtnCode == "0000000") {
+                $scope.key = data.bizData.key;
+                $scope.hashmapValue = data.bizData.value;
+                $scope.ttl = data.bizData.ttl;
+                $scope.size = data.bizData.size;
+            }
+        });
+    }
     
     $(".nav-tabs").on("click", "a", function (e) {
         e.preventDefault();

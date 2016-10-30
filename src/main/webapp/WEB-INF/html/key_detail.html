@@ -1,440 +1,428 @@
-<!--string-->
-<div id="string">
-    <div>
-        <div style="margin:0 auto;width:75%;" class="form-inline">
-            <span style="font-size: 16px;">String:</span>
-            <input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' placeholder='e.g. '/>
-            &nbsp;
-            <span>Size:</span>
-            <span>14</span>
-            &nbsp;
-            <span>TTL:</span>
-            <span>-1</span>
-            &nbsp;
-            <button type="button" class="btn btn-default">Rename</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">delete</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Reload Value</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Set TTL</button>
-        </div>
-    </div>
-
-    <div style="margin:0 auto;width:85%;">
-        <div class="form-inline" style="margin: 0 0 10px;">
-            <h4>
-                <label style="font-size: 16px" for="Value">Value:</label>
-                <small>size in bytes:20</small>
-                <button type="button" style="float:right;" class="btn btn-default">Save</button>
-            </h4>
-        </div>
-        <textarea class="form-control" disabled rows="10" id="StringValue"></textarea>
-    </div>
-</div>
-
-<hr>
-
-<!--list-->
-<div id="list">
-    <div>
-        <div style="margin:0 auto;width:65%;" class="form-inline">
-            <span style="font-size: 16px;">List:</span>
-            <input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' placeholder='e.g. '/>
-            &nbsp;
-            <span>Size:</span>
-            <span>14</span>
-            &nbsp;
-            <span>TTL:</span>
-            <span>-1</span>
-            &nbsp;
-            <button type="button" class="btn btn-default">Rename</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">delete</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Set TTL</button>
-        </div>
-        &nbsp;
-        <div style="margin:0 auto;width:65%;" class="form-inline">
-            <button type="button" class="btn btn-default">Add Row</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Delete Row</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Reload Value</button>
-            &nbsp;
-            <input style="font-size: 16px; width:400px;" autofocus='autofocus' placeholder='Search on page.. '/>
-        </div>
-    </div>
-
-    <div>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>row</th>
-                <th>value</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>john@example.com</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>july@example.com</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <div class="page-num">
-            <div class="utils_pager" ng-if="modelEntrys.length > 0">
-                <button class="btn btn-default btn-sm" title="第一页" ng-disabled="pCtrl.page==1"
-                        ng-click="page(1)">
-                    <span class="glyphicon glyphicon-step-backward"></span></button>
-                <button class="btn btn-default btn-sm" title="上一页"
-                        ng-disabled="pCtrl.page==1" ng-click="page(int(pCtrl.page)-1)">
-                    <span class="glyphicon glyphicon-chevron-left"></span></button>
-                <input class="form-control input-sm" type="text" ng-model="pCtrl.page"
-                       onkeypress="return utils.onlyNum(event)" min="1" max="{{pCtrl.total}}"> /
-                共{{pCtrl.total}}页
-                <button class="btn btn-default btn-sm" title="前往" ng-click="page(pCtrl.page)"
-                        ng-disabled="pCtrl.total==1">GO</button>
-                <button class="btn btn-default btn-sm" title="下一页"
-                        ng-click="page(int(pCtrl.page)+1)" ng-disabled="pCtrl.page==pCtrl.total">
-                    <span class="glyphicon glyphicon-chevron-right"></span></button>
-                <button class="btn btn-default btn-sm" title="最后一页"
-                        ng-click="page(pCtrl.total)" ng-disabled="pCtrl.page==pCtrl.total">
-                    <span class="glyphicon glyphicon-step-forward"></span></button>
-                每页{{pCtrl.pagesize}}条，共{{pCtrl.records}}条
-            </div>
-        </div>
-
-    </div>
-
-    <div style="margin:0 auto;width:85%;">
-        <div class="form-inline" style="margin: 0 0 10px;">
-            <h4>
-                <label style="font-size: 16px" for="Value">Value:</label>
-                <small>size in bytes:20</small>
-                <button type="button" style="float:right;" class="btn btn-default">Save</button>
-            </h4>
-        </div>
-        <textarea class="form-control" disabled rows="10" id="ListValue"></textarea>
-    </div>
-
-</div>
-
-<hr>
-
-<!--hash-->
-<div id="hash" >
-    <div>
-        <div style="margin:0 auto;width:65%;" class="form-inline">
-            <span style="font-size: 16px;">Hash:</span>
-            <input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' placeholder='e.g. '/>
-            &nbsp;
-            <span>Size:</span>
-            <span>14</span>
-            &nbsp;
-            <span>TTL:</span>
-            <span>-1</span>
-            &nbsp;
-            <button type="button" class="btn btn-default">Rename</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">delete</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Set TTL</button>
-        </div>
-        &nbsp;
-        <div style="margin:0 auto;width:65%;" class="form-inline">
-            <button type="button" class="btn btn-default">Add Row</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Delete Row</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Reload Value</button>
-            &nbsp;
-            <input style="font-size: 16px; width:400px;" autofocus='autofocus' placeholder='Search on page.. '/>
-        </div>
-    </div>
-
-    <div>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>row</th>
-                <th>key</th>
-                <th>value</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <div class="page-num">
-            <div class="utils_pager" ng-if="modelEntrys.length > 0">
-                <button class="btn btn-default btn-sm" title="第一页" ng-disabled="pCtrl.page==1"
-                        ng-click="page(1)">
-                    <span class="glyphicon glyphicon-step-backward"></span></button>
-                <button class="btn btn-default btn-sm" title="上一页"
-                        ng-disabled="pCtrl.page==1" ng-click="page(int(pCtrl.page)-1)">
-                    <span class="glyphicon glyphicon-chevron-left"></span></button>
-                <input class="form-control input-sm" type="text" ng-model="pCtrl.page"
-                       onkeypress="return utils.onlyNum(event)" min="1" max="{{pCtrl.total}}"> /
-                共{{pCtrl.total}}页
-                <button class="btn btn-default btn-sm" title="前往" ng-click="page(pCtrl.page)"
-                        ng-disabled="pCtrl.total==1">GO</button>
-                <button class="btn btn-default btn-sm" title="下一页"
-                        ng-click="page(int(pCtrl.page)+1)" ng-disabled="pCtrl.page==pCtrl.total">
-                    <span class="glyphicon glyphicon-chevron-right"></span></button>
-                <button class="btn btn-default btn-sm" title="最后一页"
-                        ng-click="page(pCtrl.total)" ng-disabled="pCtrl.page==pCtrl.total">
-                    <span class="glyphicon glyphicon-step-forward"></span></button>
-                每页{{pCtrl.pagesize}}条，共{{pCtrl.records}}条
-            </div>
-        </div>
-
-    </div>
-
-    <div style="margin:0 auto;width:85%;">
-        <div class="form-inline" style="margin: 0 0 10px;">
-            <h4>
-                <label style="font-size: 16px" for="Value">Key:</label>
-                <small>size in bytes:20</small>
-                <button type="button" style="float:right;" class="btn btn-default">Save</button>
-            </h4>
-        </div>
-        <textarea class="form-control" disabled rows="10" id="HashValue"></textarea>
-    </div>
-
-    <div style="margin:0 auto;width:85%;">
-        <div class="form-inline" style="margin: 0 0 10px;">
-            <h4>
-                <label style="font-size: 16px" for="Value">Value:</label>
-                <small>size in bytes:20</small>
-            </h4>
-        </div>
-        <textarea class="form-control" disabled rows="10" id="Value"></textarea>
-    </div>
-
-</div>
-
-<hr>
-
-<!--set-->
-<div id="set">
-    <div>
-        <div style="margin:0 auto;width:65%;" class="form-inline">
-            <span style="font-size: 16px;">Set:</span>
-            <input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' placeholder='e.g. '/>
-            &nbsp;
-            <span>Size:</span>
-            <span>14</span>
-            &nbsp;
-            <span>TTL:</span>
-            <span>-1</span>
-            &nbsp;
-            <button type="button" class="btn btn-default">Rename</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">delete</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Set TTL</button>
-        </div>
-        &nbsp;
-        <div style="margin:0 auto;width:65%;" class="form-inline">
-            <button type="button" class="btn btn-default">Add Row</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Delete Row</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Reload Value</button>
-            &nbsp;
-            <input style="font-size: 16px; width:400px;" autofocus='autofocus' placeholder='Search on page.. '/>
-        </div>
-    </div>
-
-    <div>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>row</th>
-                <th>value</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>john@example.com</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>july@example.com</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <div class="page-num">
-            <div class="utils_pager" ng-if="modelEntrys.length > 0">
-                <button class="btn btn-default btn-sm" title="第一页" ng-disabled="pCtrl.page==1"
-                        ng-click="page(1)">
-                    <span class="glyphicon glyphicon-step-backward"></span></button>
-                <button class="btn btn-default btn-sm" title="上一页"
-                        ng-disabled="pCtrl.page==1" ng-click="page(int(pCtrl.page)-1)">
-                    <span class="glyphicon glyphicon-chevron-left"></span></button>
-                <input class="form-control input-sm" type="text" ng-model="pCtrl.page"
-                       onkeypress="return utils.onlyNum(event)" min="1" max="{{pCtrl.total}}"> /
-                共{{pCtrl.total}}页
-                <button class="btn btn-default btn-sm" title="前往" ng-click="page(pCtrl.page)"
-                        ng-disabled="pCtrl.total==1">GO</button>
-                <button class="btn btn-default btn-sm" title="下一页"
-                        ng-click="page(int(pCtrl.page)+1)" ng-disabled="pCtrl.page==pCtrl.total">
-                    <span class="glyphicon glyphicon-chevron-right"></span></button>
-                <button class="btn btn-default btn-sm" title="最后一页"
-                        ng-click="page(pCtrl.total)" ng-disabled="pCtrl.page==pCtrl.total">
-                    <span class="glyphicon glyphicon-step-forward"></span></button>
-                每页{{pCtrl.pagesize}}条，共{{pCtrl.records}}条
-            </div>
-        </div>
-
-    </div>
-
-    <div style="margin:0 auto;width:85%;">
-        <div class="form-inline" style="margin: 0 0 10px;">
-            <h4>
-                <label style="font-size: 16px" for="Value">Value:</label>
-                <small>size in bytes:20</small>
-                <button type="button" style="float:right;" class="btn btn-default">Save</button>
-            </h4>
-        </div>
-        <textarea class="form-control" disabled rows="10" id="SetValue"></textarea>
-    </div>
-</div>
-
-<hr>
-
-<!--zset-->
-<div id="zset">
-    <div>
-        <div style="margin:0 auto;width:65%;" class="form-inline">
-            <span style="font-size: 16px;">ZSet:</span>
-            <input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' placeholder='e.g. '/>
-            &nbsp;
-            <span>Size:</span>
-            <span>14</span>
-            &nbsp;
-            <span>TTL:</span>
-            <span>-1</span>
-            &nbsp;
-            <button type="button" class="btn btn-default">Rename</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">delete</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Set TTL</button>
-        </div>
-        &nbsp;
-        <div style="margin:0 auto;width:65%;" class="form-inline">
-            <button type="button" class="btn btn-default">Add Row</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Delete Row</button>
-            &nbsp;
-            <button type="button" class="btn btn-default">Reload Value</button>
-            &nbsp;
-            <input style="font-size: 16px; width:400px;" autofocus='autofocus' placeholder='Search on page.. '/>
-        </div>
-    </div>
-
-    <div>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>row</th>
-                <th>value</th>
-                <th>score</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>1</td>
-                <td>Doe</td>
-                <td>1</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Moe</td>
-                <td>2</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Dooley</td>
-                <td>3</td>
-            </tr>
-            </tbody>
-        </table>
-
-        <div class="page-num">
-            <div class="utils_pager" ng-if="modelEntrys.length > 0">
-                <button class="btn btn-default btn-sm" title="第一页" ng-disabled="pCtrl.page==1"
-                        ng-click="page(1)">
-                    <span class="glyphicon glyphicon-step-backward"></span></button>
-                <button class="btn btn-default btn-sm" title="上一页"
-                        ng-disabled="pCtrl.page==1" ng-click="page(int(pCtrl.page)-1)">
-                    <span class="glyphicon glyphicon-chevron-left"></span></button>
-                <input class="form-control input-sm" type="text" ng-model="pCtrl.page"
-                       onkeypress="return utils.onlyNum(event)" min="1" max="{{pCtrl.total}}"> /
-                共{{pCtrl.total}}页
-                <button class="btn btn-default btn-sm" title="前往" ng-click="page(pCtrl.page)"
-                        ng-disabled="pCtrl.total==1">GO</button>
-                <button class="btn btn-default btn-sm" title="下一页"
-                        ng-click="page(int(pCtrl.page)+1)" ng-disabled="pCtrl.page==pCtrl.total">
-                    <span class="glyphicon glyphicon-chevron-right"></span></button>
-                <button class="btn btn-default btn-sm" title="最后一页"
-                        ng-click="page(pCtrl.total)" ng-disabled="pCtrl.page==pCtrl.total">
-                    <span class="glyphicon glyphicon-step-forward"></span></button>
-                每页{{pCtrl.pagesize}}条，共{{pCtrl.records}}条
-            </div>
-        </div>
-
-    </div>
-
-    <div style="margin:0 auto;width:85%;">
+<div ng-app="modelApp" ng-controller="keyModel">
+    <!--string-->
+    <div id="string" ng-show="stringShow">
         <div>
-            <div class="form-inline" style="margin: 0 0 10px;">
-                <label style="font-size: 16px" for="Value">Score:</label>
-                <button type="button" style="float:right;" class="btn btn-default">Save</button>
+            <div style="margin:0 auto;width:75%;" class="form-inline">
+                <span style="font-size: 16px;">String:</span>
+                <input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' placeholder='e.g. '/>
+                &nbsp;
+                <span>Size:</span>
+                <span>14</span>
+                &nbsp;
+                <span>TTL:</span>
+                <span>-1</span>
+                &nbsp;
+                <button type="button" class="btn btn-default">Rename</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">delete</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Reload Value</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Set TTL</button>
             </div>
-            <input class="form-control"  autofocus='autofocus'/>
+        </div>
+
+        <div style="margin:0 auto;width:85%;">
+            <div class="form-inline" style="margin: 0 0 10px;">
+                <h4>
+                    <label style="font-size: 16px" for="Value">Value:</label>
+                    <small>size in bytes:20</small>
+                    <button type="button" style="float:right;" class="btn btn-default">Save</button>
+                </h4>
+            </div>
+            <textarea class="form-control" disabled rows="10" id="StringValue"></textarea>
         </div>
     </div>
 
-    <div style="margin:0 auto;width:85%;">
-        <div class="form-inline" style="margin: 0 0 10px;">
-            <h4>
-                <label style="font-size: 16px" for="Value">Value:</label>
-                <small>size in bytes:20</small>
-            </h4>
+
+    <!--list-->
+    <div id="list" ng-show="listShow">
+        <div>
+            <div style="margin:0 auto;width:65%;" class="form-inline">
+                <span style="font-size: 16px;">List:</span>
+                <input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' placeholder='e.g. '/>
+                &nbsp;
+                <span>Size:</span>
+                <span>14</span>
+                &nbsp;
+                <span>TTL:</span>
+                <span>-1</span>
+                &nbsp;
+                <button type="button" class="btn btn-default">Rename</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">delete</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Set TTL</button>
+            </div>
+            &nbsp;
+            <div style="margin:0 auto;width:65%;" class="form-inline">
+                <button type="button" class="btn btn-default">Add Row</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Delete Row</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Reload Value</button>
+                &nbsp;
+                <input style="font-size: 16px; width:400px;" autofocus='autofocus' placeholder='Search on page.. '/>
+            </div>
         </div>
-        <textarea class="form-control" disabled rows="10" id="ZSetValue"></textarea>
+
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>row</th>
+                    <th>value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>john@example.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>july@example.com</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="page-num">
+                <div class="utils_pager" ng-if="modelEntrys.length > 0">
+                    <button class="btn btn-default btn-sm" title="第一页" ng-disabled="pCtrl.page==1"
+                            ng-click="page(1)">
+                        <span class="glyphicon glyphicon-step-backward"></span></button>
+                    <button class="btn btn-default btn-sm" title="上一页"
+                            ng-disabled="pCtrl.page==1" ng-click="page(int(pCtrl.page)-1)">
+                        <span class="glyphicon glyphicon-chevron-left"></span></button>
+                    <input class="form-control input-sm" type="text" ng-model="pCtrl.page"
+                           onkeypress="return utils.onlyNum(event)" min="1" max="{{pCtrl.total}}"> /
+                    共{{pCtrl.total}}页
+                    <button class="btn btn-default btn-sm" title="前往" ng-click="page(pCtrl.page)"
+                            ng-disabled="pCtrl.total==1">GO</button>
+                    <button class="btn btn-default btn-sm" title="下一页"
+                            ng-click="page(int(pCtrl.page)+1)" ng-disabled="pCtrl.page==pCtrl.total">
+                        <span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <button class="btn btn-default btn-sm" title="最后一页"
+                            ng-click="page(pCtrl.total)" ng-disabled="pCtrl.page==pCtrl.total">
+                        <span class="glyphicon glyphicon-step-forward"></span></button>
+                    每页{{pCtrl.pagesize}}条，共{{pCtrl.records}}条
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin:0 auto;width:85%;">
+            <div class="form-inline" style="margin: 0 0 10px;">
+                <h4>
+                    <label style="font-size: 16px" for="Value">Value:</label>
+                    <small>size in bytes:20</small>
+                    <button type="button" style="float:right;" class="btn btn-default">Save</button>
+                </h4>
+            </div>
+            <textarea class="form-control" disabled rows="10" id="ListValue"></textarea>
+        </div>
+
     </div>
 
+
+    <!--hash-->
+    <div id="hash" ng-show="hashShow">
+        <div>
+            <div style="margin:0 auto;width:65%;" class="form-inline">
+                <span style="font-size: 16px;">Hash:</span>
+                <input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' placeholder='e.g. ' ng-model="key" disabled/>
+                &nbsp;
+                <span>Size:</span>
+                <span>{{size}}</span>
+                &nbsp;
+                <span>TTL:</span>
+                <span>{{ttl}}</span>
+                &nbsp;
+                <button type="button" class="btn btn-default">Rename</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">delete</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Set TTL</button>
+            </div>
+            &nbsp;
+            <div style="margin:0 auto;width:65%;" class="form-inline">
+                <button type="button" class="btn btn-default">Add Row</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Delete Row</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Reload Value</button>
+                &nbsp;
+                <input style="font-size: 16px; width:400px;" autofocus='autofocus' placeholder='Search on page.. '/>
+            </div>
+        </div>
+
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>row</th>
+                    <th>key</th>
+                    <th>value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="(index, entity) in hashmapValue">
+                    <td>{{index}}</td>
+                    <td>{{entity.key}}</td>
+                    <td>{{entity.value}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="page-num">
+                <div class="utils_pager" ng-if="modelEntrys.length > 0">
+                    <button class="btn btn-default btn-sm" title="第一页" ng-disabled="pCtrl.page==1"
+                            ng-click="page(1)">
+                        <span class="glyphicon glyphicon-step-backward"></span></button>
+                    <button class="btn btn-default btn-sm" title="上一页"
+                            ng-disabled="pCtrl.page==1" ng-click="page(int(pCtrl.page)-1)">
+                        <span class="glyphicon glyphicon-chevron-left"></span></button>
+                    <input class="form-control input-sm" type="text" ng-model="pCtrl.page"
+                           onkeypress="return utils.onlyNum(event)" min="1" max="{{pCtrl.total}}"> /
+                    共{{pCtrl.total}}页
+                    <button class="btn btn-default btn-sm" title="前往" ng-click="page(pCtrl.page)"
+                            ng-disabled="pCtrl.total==1">GO</button>
+                    <button class="btn btn-default btn-sm" title="下一页"
+                            ng-click="page(int(pCtrl.page)+1)" ng-disabled="pCtrl.page==pCtrl.total">
+                        <span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <button class="btn btn-default btn-sm" title="最后一页"
+                            ng-click="page(pCtrl.total)" ng-disabled="pCtrl.page==pCtrl.total">
+                        <span class="glyphicon glyphicon-step-forward"></span></button>
+                    每页{{pCtrl.pagesize}}条，共{{pCtrl.records}}条
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin:0 auto;width:85%;">
+            <div class="form-inline" style="margin: 0 0 10px;">
+                <h4>
+                    <label style="font-size: 16px" for="Value">Key:</label>
+                    <small>size in bytes:20</small>
+                    <button type="button" style="float:right;" class="btn btn-default">Save</button>
+                </h4>
+            </div>
+            <textarea class="form-control" disabled rows="10" id="HashValue"></textarea>
+        </div>
+
+        <div style="margin:0 auto;width:85%;">
+            <div class="form-inline" style="margin: 0 0 10px;">
+                <h4>
+                    <label style="font-size: 16px" for="Value">Value:</label>
+                    <small>size in bytes:20</small>
+                </h4>
+            </div>
+            <textarea class="form-control" disabled rows="10" id="Value"></textarea>
+        </div>
+
+    </div>
+
+
+    <!--set-->
+    <div id="set" ng-show="setShow">
+        <div>
+            <div style="margin:0 auto;width:65%;" class="form-inline">
+                <span style="font-size: 16px;">Set:</span>
+                <input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' placeholder='e.g. '/>
+                &nbsp;
+                <span>Size:</span>
+                <span>14</span>
+                &nbsp;
+                <span>TTL:</span>
+                <span>-1</span>
+                &nbsp;
+                <button type="button" class="btn btn-default">Rename</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">delete</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Set TTL</button>
+            </div>
+            &nbsp;
+            <div style="margin:0 auto;width:65%;" class="form-inline">
+                <button type="button" class="btn btn-default">Add Row</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Delete Row</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Reload Value</button>
+                &nbsp;
+                <input style="font-size: 16px; width:400px;" autofocus='autofocus' placeholder='Search on page.. '/>
+            </div>
+        </div>
+
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>row</th>
+                    <th>value</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>john@example.com</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>mary@example.com</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>july@example.com</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="page-num">
+                <div class="utils_pager" ng-if="modelEntrys.length > 0">
+                    <button class="btn btn-default btn-sm" title="第一页" ng-disabled="pCtrl.page==1"
+                            ng-click="page(1)">
+                        <span class="glyphicon glyphicon-step-backward"></span></button>
+                    <button class="btn btn-default btn-sm" title="上一页"
+                            ng-disabled="pCtrl.page==1" ng-click="page(int(pCtrl.page)-1)">
+                        <span class="glyphicon glyphicon-chevron-left"></span></button>
+                    <input class="form-control input-sm" type="text" ng-model="pCtrl.page"
+                           onkeypress="return utils.onlyNum(event)" min="1" max="{{pCtrl.total}}"> /
+                    共{{pCtrl.total}}页
+                    <button class="btn btn-default btn-sm" title="前往" ng-click="page(pCtrl.page)"
+                            ng-disabled="pCtrl.total==1">GO</button>
+                    <button class="btn btn-default btn-sm" title="下一页"
+                            ng-click="page(int(pCtrl.page)+1)" ng-disabled="pCtrl.page==pCtrl.total">
+                        <span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <button class="btn btn-default btn-sm" title="最后一页"
+                            ng-click="page(pCtrl.total)" ng-disabled="pCtrl.page==pCtrl.total">
+                        <span class="glyphicon glyphicon-step-forward"></span></button>
+                    每页{{pCtrl.pagesize}}条，共{{pCtrl.records}}条
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin:0 auto;width:85%;">
+            <div class="form-inline" style="margin: 0 0 10px;">
+                <h4>
+                    <label style="font-size: 16px" for="Value">Value:</label>
+                    <small>size in bytes:20</small>
+                    <button type="button" style="float:right;" class="btn btn-default">Save</button>
+                </h4>
+            </div>
+            <textarea class="form-control" disabled rows="10" id="SetValue"></textarea>
+        </div>
+    </div>
+
+
+    <!--zset-->
+    <div id="zset" ng-show="zsetShow">
+        <div>
+            <div style="margin:0 auto;width:65%;" class="form-inline">
+                <span style="font-size: 16px;">ZSet:</span>
+                <input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' placeholder='e.g. '/>
+                &nbsp;
+                <span>Size:</span>
+                <span>14</span>
+                &nbsp;
+                <span>TTL:</span>
+                <span>-1</span>
+                &nbsp;
+                <button type="button" class="btn btn-default">Rename</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">delete</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Set TTL</button>
+            </div>
+            &nbsp;
+            <div style="margin:0 auto;width:65%;" class="form-inline">
+                <button type="button" class="btn btn-default">Add Row</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Delete Row</button>
+                &nbsp;
+                <button type="button" class="btn btn-default">Reload Value</button>
+                &nbsp;
+                <input style="font-size: 16px; width:400px;" autofocus='autofocus' placeholder='Search on page.. '/>
+            </div>
+        </div>
+
+        <div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>row</th>
+                    <th>value</th>
+                    <th>score</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Doe</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Moe</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Dooley</td>
+                    <td>3</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="page-num">
+                <div class="utils_pager" ng-if="modelEntrys.length > 0">
+                    <button class="btn btn-default btn-sm" title="第一页" ng-disabled="pCtrl.page==1"
+                            ng-click="page(1)">
+                        <span class="glyphicon glyphicon-step-backward"></span></button>
+                    <button class="btn btn-default btn-sm" title="上一页"
+                            ng-disabled="pCtrl.page==1" ng-click="page(int(pCtrl.page)-1)">
+                        <span class="glyphicon glyphicon-chevron-left"></span></button>
+                    <input class="form-control input-sm" type="text" ng-model="pCtrl.page"
+                           onkeypress="return utils.onlyNum(event)" min="1" max="{{pCtrl.total}}"> /
+                    共{{pCtrl.total}}页
+                    <button class="btn btn-default btn-sm" title="前往" ng-click="page(pCtrl.page)"
+                            ng-disabled="pCtrl.total==1">GO</button>
+                    <button class="btn btn-default btn-sm" title="下一页"
+                            ng-click="page(int(pCtrl.page)+1)" ng-disabled="pCtrl.page==pCtrl.total">
+                        <span class="glyphicon glyphicon-chevron-right"></span></button>
+                    <button class="btn btn-default btn-sm" title="最后一页"
+                            ng-click="page(pCtrl.total)" ng-disabled="pCtrl.page==pCtrl.total">
+                        <span class="glyphicon glyphicon-step-forward"></span></button>
+                    每页{{pCtrl.pagesize}}条，共{{pCtrl.records}}条
+                </div>
+            </div>
+
+        </div>
+
+        <div style="margin:0 auto;width:85%;">
+            <div>
+                <div class="form-inline" style="margin: 0 0 10px;">
+                    <label style="font-size: 16px" for="Value">Score:</label>
+                    <button type="button" style="float:right;" class="btn btn-default">Save</button>
+                </div>
+                <input class="form-control"  autofocus='autofocus'/>
+            </div>
+        </div>
+
+        <div style="margin:0 auto;width:85%;">
+            <div class="form-inline" style="margin: 0 0 10px;">
+                <h4>
+                    <label style="font-size: 16px" for="Value">Value:</label>
+                    <small>size in bytes:20</small>
+                </h4>
+            </div>
+            <textarea class="form-control" disabled rows="10" id="ZSetValue"></textarea>
+        </div>
+
+    </div>
 </div>
