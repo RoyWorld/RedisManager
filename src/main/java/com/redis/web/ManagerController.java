@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.exceptions.JedisDataException;
 
 import java.util.*;
 
@@ -64,6 +65,7 @@ public class ManagerController {
         switch (type){
             case "list":
             case "hash":
+                map.put("type", type);
                 Map entries = hashMapOperator.hGet(key);
                 BizData<Map.Entry> bizData = new BizData<>();
                 bizData.setRows(new ArrayList<>(entries.entrySet()));
@@ -72,5 +74,18 @@ public class ManagerController {
                 return map;
         }
         return null;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/keyRename")
+    public Object keyReme(String oldKey, String newKey){
+        Map<String, String> map = new HashMap<>();
+        if (!keyOperator.exists(newKey)){
+            keyOperator.rename(oldKey, newKey);
+            map.put("request", "success");
+        } else{
+            map.put("request", "error");
+        }
+        return map;
     }
 }
