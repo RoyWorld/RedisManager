@@ -16,7 +16,7 @@ modelApp.controller('modelListCtrl', function($scope, $rootScope, $http){
     }
 
     //查database中所有keys
-    $scope.query = function (){
+    $rootScope.query = function (){
         $http({
             method: "get",
             url: url + "/database",
@@ -60,9 +60,11 @@ modelApp.controller('modelListCtrl', function($scope, $rootScope, $http){
         }).success(function (data) {
             if (data.rtnCode == "0000000") {
                 $scope.key = data.bizData.key;
+                $scope.oldKey = $scope.key;
                 $scope.hashmapValue = data.bizData.value.rows;
                 $scope.ttl = data.bizData.ttl;
                 $scope.size = data.bizData.size;
+                setTypeShow(data.bizData.type);
 
                 var pCtrl = {};
                 angular.forEach(["records", "pagesize", "total","page"], function (name) {
@@ -72,6 +74,26 @@ modelApp.controller('modelListCtrl', function($scope, $rootScope, $http){
                 $scope.pCtrl = pCtrl;
             }
         });
+    }
+
+    function setTypeShow(type){
+        switch (type){
+            case "string":
+                $scope.stringShow = true;
+                break;
+            case "list":
+                $scope.listShow = true;
+                break;
+            case "hash":
+                $scope.hashShow = true;
+                break;
+            case "set":
+                $scope.setShow = true;
+                break;
+            case "zset":
+                $scope.zsetShow = true;
+                break;
+        }
     }
     
     $(".nav-tabs").on("click", "a", function (e) {

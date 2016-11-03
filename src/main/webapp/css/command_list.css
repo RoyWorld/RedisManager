@@ -330,3 +330,7 @@ body { width: 100%; height: 100%; }
 .row-fluid > .span-fixed-sidebar { margin-left: 290px; }
 .page-num{ padding:15px 0; text-align:center;}
 .page-num input{ width:50px; padding:5px; display:inline-block; text-align:center; font-size:14px; vertical-align:middle;}
+body {
+    overflow-y: scroll;
+    padding-right: 0 !important;
+}

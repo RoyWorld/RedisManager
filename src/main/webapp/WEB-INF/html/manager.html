@@ -32,7 +32,7 @@
                         <ul class="nav" ng-repeat="database in databaseList">
                             <li><label class="tree-toggle nav-header" ng-click="treeToggle(database)">{{database.name}}</label>
                                 <ul class="nav tree" ng-show="database.display">
-                                    <li ng-repeat="key in database.keys" ng-click="keySelect(key, database.name)"><a href="#">{{key}}</a></li>
+                                    <li ng-repeat="key in database.keys | orderBy" ng-click="keySelect(key, database.name)"><a href="#">{{key}}</a></li>
                                 </ul>
                             </li>
                         </ul>

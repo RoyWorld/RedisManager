@@ -142,17 +142,17 @@
                 <span>TTL:</span>
                 <span>{{ttl}}</span>
                 &nbsp;
-                <button type="button" class="btn btn-default">Rename</button>
+                <button type="button" class="btn btn-default" ng-click="openRenameModal()">Rename</button>
                 &nbsp;
-                <button type="button" class="btn btn-default">delete</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#Delete">Delete</button>
                 &nbsp;
-                <button type="button" class="btn btn-default">Set TTL</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#TTL">Set TTL</button>
             </div>
             &nbsp;
             <div style="margin:0 auto;width:65%;" class="form-inline">
-                <button type="button" class="btn btn-default">Add Row</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#AddRow">Add Row</button>
                 &nbsp;
-                <button type="button" class="btn btn-default">Delete Row</button>
+                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#DeleteRow">Delete Row</button>
                 &nbsp;
                 <button type="button" class="btn btn-default">Reload Value</button>
                 &nbsp;
@@ -170,7 +170,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="(index, entity) in hashmapValue">
+                <tr ng-repeat="(index, entity) in hashmapValue | orderBy: 'key'" ng-click="hashTrClick(entity)">
                     <td>{{index}}</td>
                     <td>{{entity.key}}</td>
                     <td>{{entity.value}}</td>
@@ -207,21 +207,21 @@
             <div class="form-inline" style="margin: 0 0 10px;">
                 <h4>
                     <label style="font-size: 16px" for="Value">Key:</label>
-                    <small>size in bytes:20</small>
+                    <small>size in bytes:{{keyByteSize}}</small>
                     <button type="button" style="float:right;" class="btn btn-default">Save</button>
                 </h4>
             </div>
-            <textarea class="form-control" disabled rows="10" id="HashValue"></textarea>
+            <textarea class="form-control" disabled rows="10" id="HashValue" ng-model="hashKey"></textarea>
         </div>
 
         <div style="margin:0 auto;width:85%;">
             <div class="form-inline" style="margin: 0 0 10px;">
                 <h4>
                     <label style="font-size: 16px" for="Value">Value:</label>
-                    <small>size in bytes:20</small>
+                    <small>size in bytes:{{valueByteSize}}</small>
                 </h4>
             </div>
-            <textarea class="form-control" disabled rows="10" id="Value"></textarea>
+            <textarea class="form-control" disabled rows="10" id="Value" ng-model="hashValue"></textarea>
         </div>
 
     </div>
@@ -425,4 +425,133 @@
         </div>
 
     </div>
+
+    <!--rename dialog-->
+    <div class="modal fade" id="Rename" role="dialog" aria-hidden="false">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Rename</h4>
+                </div>
+                <div class="modal-body">
+                    <input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' ng-model="key"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" ng-click="renameSave()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--delete dialog-->
+    <div class="modal fade" id="Delete" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete key</h4>
+                </div>
+                <div class="modal-body">
+                    <p><span class="glyphicon glyphicon-warning-sign"></span>&nbsp;Do you really want to delete this key?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--ttl dialog-->
+    <div class="modal fade" id="TTL" role="dialog" >
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Set key TTL</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-inline"><label>New TTL:</label><input style="font-size: 20px; width:400px;" class="form-control"  autofocus='autofocus' ng-model="ttl"/></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default" >OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--add row dialog-->
+    <div class="modal fade" id="AddRow" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Row</h4>
+                </div>
+                <div class="modal-body">
+                    <div style="margin:0 auto;width:85%;">
+                        <div class="form-inline" style="margin: 0 0 10px;">
+                            <h4>
+                                <label style="font-size: 16px" for="Value">Key:</label>
+                                <small>size in bytes:{{keyByteSize}}</small>
+                                <button type="button" style="float:right;" class="btn btn-default">Save</button>
+                            </h4>
+                        </div>
+                        <textarea class="form-control" disabled rows="10" id="HashValue" ng-model="hashKey"></textarea>
+                    </div>
+
+                    <div style="margin:0 auto;width:85%;">
+                        <div class="form-inline" style="margin: 0 0 10px;">
+                            <h4>
+                                <label style="font-size: 16px" for="Value">Value:</label>
+                                <small>size in bytes:{{valueByteSize}}</small>
+                            </h4>
+                        </div>
+                        <textarea class="form-control" disabled rows="10" id="Value" ng-model="hashValue"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-default" >OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--delete row dialog-->
+    <div class="modal fade" id="DeleteRow" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Delete row</h4>
+                </div>
+                <div class="modal-body">
+                    <p><span class="glyphicon glyphicon-warning-sign"></span>&nbsp;Do you really want to delete this row?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+</div>
+
+
